@@ -5,6 +5,8 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.text.DecimalFormat;
+import java.util.Arrays;
 
 public class Main {
 	
@@ -12,12 +14,11 @@ public class Main {
 	
 	private static double [][] array;
 
-	public Main() {
+
 	
-	}
-	
-	public void readData () {
+	public static void readData () {
 		
+		System.out.println("Insert the text input");
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		try {
@@ -31,11 +32,13 @@ public class Main {
 				for (int j = 0; j < parts.length; j++) {
 					numbersSequence[j] = Double.parseDouble(parts[j]);
 				}
+				
+				
+				
 				array[i] = numbersSequence;
 				line = br.readLine();
 			}
-		br.close();	
-			
+			br.close();		
 		} catch (NumberFormatException exception) {
 			System.out.println("First line is not an integer");
 	    } catch (IOException exception) {
@@ -45,20 +48,50 @@ public class Main {
 
 		
 	}
-
-	public static void main(String[] args) throws IOException {
-
+	
+	public static void dataSorting () throws IOException {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		
 		
-
-		
-		bw.write("sssfafad\n");
-		
+		for (int i = 0; i < array.length; i++) {
+			
+			int changesCounter = 0;
+			int counter = 0;
+			int changes = 1;
+			
+			for (int j = 1; j < array[i].length; j++) {
+				changes = 0;
+				for (int k = 0; k < array[i].length - j; k++) {
+					if (array[i][k] > array[i][k+1]) {
+						double temp = array[i][k];
+						array[i][k] = array[i][k+1];
+						array[i][k+1] = temp;
+						changes++;
+					}
+				}
+				counter++;
+				changesCounter += changes;	
+			}
+			/*
+			bw.write(Integer.toString(counter) + " AND " + Integer.toString(changesCounter));
+			bw.newLine();
+			*/
+			DecimalFormat  df = new DecimalFormat("0.0#");
+			double average = (double) changesCounter/counter;
+			double finalAverage = Math.floor(average * 100) / 100;
+			bw.write(df.format(finalAverage) + " - " + Arrays.toString(array[i]));
+			bw.newLine();
+			bw.flush();
+		}
 		
 		bw.close();
+	}
+
+	public static void main(String[] args) throws IOException {
 		
-		
+		readData();
+		dataSorting();
+
 	}
 
 }
