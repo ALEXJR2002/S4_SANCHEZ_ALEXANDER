@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.text.DecimalFormat;
+import java.util.Arrays;
 
 public class Main {
 	
@@ -75,11 +76,8 @@ public class Main {
 			DecimalFormat  df = new DecimalFormat("0.0#");
 			double average = (double) changesCounter/counter;
 			double finalAverage = Math.floor(average * 100) / 100;
-			bw.write(df.format(finalAverage) + " - ");
-			for (double element : array[i]) {
-				bw.write(element + " ");				
-			}
-			
+			bw.write(df.format(finalAverage) + " - " + Arrays.toString(array[i]).replace("[", "").replace("]", "").replace(",", " "));
+
 			bw.newLine();
 			bw.flush();
 		}
