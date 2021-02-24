@@ -18,7 +18,6 @@ public class Main {
 	
 	public static void readData () {
 		
-		System.out.println("Insert the text input");
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		try {
