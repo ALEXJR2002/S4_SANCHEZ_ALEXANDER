@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.text.DecimalFormat;
-import java.util.Arrays;
 
 public class Main {
 	
@@ -72,10 +71,7 @@ public class Main {
 				counter++;
 				changesCounter += changes;	
 			}
-			/*
-			bw.write(Integer.toString(counter) + " AND " + Integer.toString(changesCounter));
-			bw.newLine();
-			*/
+
 			DecimalFormat  df = new DecimalFormat("0.0#");
 			double average = (double) changesCounter/counter;
 			double finalAverage = Math.floor(average * 100) / 100;
