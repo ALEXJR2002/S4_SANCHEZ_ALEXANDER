@@ -75,7 +75,7 @@ public class Main {
 			DecimalFormat  df = new DecimalFormat("0.0#");
 			double average = (double) changesCounter/counter;
 			double finalAverage = Math.floor(average * 100) / 100;
-			bw.write(df.format(finalAverage).replace(",", ".") + " - " + Arrays.toString(array[i]).replace("[", "").replace("]", "").replace(",", " "));
+			bw.write(df.format(finalAverage).replace(",", ".") + "-" + Arrays.toString(array[i]).replace("[", "").replace("]", "").replace(",", " "));
 
 			bw.newLine();
 			bw.flush();
