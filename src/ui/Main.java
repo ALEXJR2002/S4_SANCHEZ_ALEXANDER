@@ -78,8 +78,7 @@ public class Main {
 			double finalAverage = Math.floor(average * 100) / 100;
 			bw.write(df.format(finalAverage).replace(",", ".") + "-" + Arrays.toString(array[i]).replace("[", "").replace("]", "").replace(",", ""));
 			
-			if (i < array.length - 1)
-				bw.newLine();
+			bw.newLine();
 			bw.flush();
 		}
 		
